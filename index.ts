@@ -45,7 +45,8 @@ const server = Bun.serve({
       if (ret === null) {
         console.log({ id: ws.data.id })
         socket.send(JSON.stringify(body))
-        socket.addEventListener('message', (event) => {
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
+        socket.addEventListener('message', async (event): Promise<void> => {
           const body: JSONRPCResponse = JSON.parse(event.data as string)
           if (body.method === 'chain_subscribeFinalizedHeads') {
             ws.publish('chain_subscribeFinalizedHeads', body.params[0] as string)
