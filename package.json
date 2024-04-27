@@ -2,6 +2,13 @@
   "name": "hyperws",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "dev": "bun --watch index.ts",
+    "build": "bun build index.ts",
+    "start": "NODE_ENV=production bun index.ts",
+    "lint": "bunx ts-standard --fix",
+    "test": "bun test"
+  },
   "devDependencies": {
     "@types/bun": "latest",
     "ts-standard": "^12.0.2"
